@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>لصغيرتي وسكرتي شيماء 💍 — أنس</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(180deg, #ffeaf1 0%, #fff4f9 50%, #f7ecff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    flex-direction: column;
+    perspective: 1000px; /* لتمكين التحولات ثلاثية الأبعاد */
+  }
+
+  .box-container {
+    position: relative;
+    width: 250px; /* زيادة عرض العلبة */
+    height: 180px; /* زيادة ارتفاع العلبة */
+    cursor: pointer;
+    perspective: 800px; /* منظور خاص بالعلبة */
+  }
+
+  .box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+  }
+
+  .lid {
+    position: absolute;
+    width: 100%;
+    height: 100px; /* ارتفاع الغطاء */
+    background: linear-gradient(90deg, #f9c2d1, #ffd6e0);
+    border-radius: 18px;
+    top: 0;
+    transform-origin: center bottom;
+    transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* تأثير فتح أكثر حيوية */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 2;
+  }
+
+  .base {
+    position: absolute;
+    top: 80px; /* لجعل القاعدة تظهر أسفل الغطاء */
+    width: 100%;
+    height: 100px; /* ارتفاع القاعدة */
+    background: linear-gradient(90deg, #f9c2d1, #ffd6e0);
+    border-radius: 18px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px; /* لترك مساحة للخاتم */
+  }
+
+  .ring-container {
+    position: absolute;
+    top: 50%; /* لتوسيط الخاتم داخل العلبة */
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transition-delay: 0.5s;
+    z-index: 3;
+  }
+
+  .ring-container img {
+    width: 120px; /* حجم أكبر للخاتم */
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)); /* توهج حول الخاتم */
+  }
+
+  .hands {
+    position: absolute;
+    bottom: -80px; /* لجعل اليدين تظهر من الأسفل */
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    opacity: 0;
+    transition: all 1s ease-out;
+    transition-delay: 0.8s;
+    z-index: 0; /* لجعل اليدين خلف العلبة جزئياً */
+    width: 400px; /* عرض اليدين */
+    height: auto;
+  }
+
+  .hands img {
+    width: 100%;
+    height: auto;
+  }
+
+  .poem {
+    text-align: center;
+    margin-top: 40px; /* زيادة الهامش العلوي */
+    opacity: 0;
+    transform: translateY(60px); /* إزاحة أكبر للنص */
+    transition: all 1s ease-out;
+    transition-delay: 1.2s;
+    font-size: 1.5rem; /* حجم خط أكبر */
+    color: #7b3f61;
+    text-shadow: 0 0 10px rgba(255,182,193,0.4), 0 0 20px rgba(255,182,193,0.2); /* توهج أقوى */
+    line-height: 1.6;
+  }
+
+  .signature {
+    margin-top: 15px; /* هامش أعلى للتوقيع */
+    font-size: 1.1rem; /* حجم خط أكبر للتوقيع */
+    color: #555;
+    font-style: italic;
+  }
+
+  .opened .lid {
+    transform: rotateX( -100deg ) translateY(-40px) translateZ(50px); /* تحويل ثلاثي الأبعاد للغطاء */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  }
+
+  .opened .ring-container {
+    transform: translate(-50%, -50%) scale(1);
+    transition-delay: 0.5s;
+  }
+
+  .opened .hands {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    transition-delay: 0.8s;
+  }
+
+  .opened .poem {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.2s;
+  }
+</style>
+</head>
+<body>
+
+<div class="box-container" id="box-container">
+  <div class="box">
+    <div class="lid"></div>
+    <div class="base">
+      <div class="ring-container">
+        <img src="https://i.imgur.com/kS5xJ4X.png" alt="خاتم الماس">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hands" id="hands">
+  <img src="https://i.imgur.com/z6fD6y2.png" alt="يدان تمسكان">
+</div>
+
+<div class="poem" id="poem">
+  <div>يا شيماء، يا أجمل أقداري</div>
+  <div>يا نور العين، وسر أسراري</div>
+  <div>لكِ قلبي وروحي، لكِ أنفاسي</div>
+  <div>أحبكِ فوق كل الحسابات والمقاييس</div>
+  <div class="signature">لصغيرتي وسكرتي شيماء 💍 — أنس</div>
+</div>
+
+<script>
+  const boxContainer = document.getElementById('box-container');
+  boxContainer.addEventListener('click', () => {
+    document.body.classList.toggle('opened');
+  });
+</script>
+
+</body>
+</html>
